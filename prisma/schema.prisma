@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Call {
+  id               String   @id @default(uuid())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  originalFilename String?
+  audioPath        String
+  language         String?  @default("en-US")
+  durationSeconds  Float?
+  status           String   @default("uploaded")
+  transcript       String? // JSON string normalized transcript
+  insights         String? // JSON string insights
+}
