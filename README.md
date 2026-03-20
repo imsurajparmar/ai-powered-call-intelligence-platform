@@ -186,29 +186,3 @@ git commit -m "Initial commit: AI-powered Call Intelligence Platform"
 git remote add origin https://github.com/imsurajparmar/ai-powered-call-intelligence-platform.git
 git push -u origin main
 ```
-
----
-
-## Notes
-
-- **Speakers:** Whisper does not diarize; segments use **alternating agent/customer** for demo charts. Use a diarized STT provider for production.
-- **Large uploads:** If requests fail, reduce file size or increase platform body limits.
-- **Analysis time:** Several GPT calls in parallel; allow **1–3 minutes** for long calls.
-
-### Build: `globals.css` SyntaxError at line 24
-
-If you see **`expected ","`** pointing at `globals.css`, it was usually **invalid CSS emitted by Tailwind** from utilities like `bg-[hsl(var(--card))]/40` without the **`hsl(... / <alpha-value>)`** pattern in `tailwind.config.ts`. This project uses **semantic tokens** (`bg-card/40`, `border-border`, `text-muted-foreground`, etc.) and **`hsl(var(--x) / <alpha-value>)`** in the theme so opacity modifiers are valid. After pulling changes, delete **`.next`** and rebuild.
-
-### Windows: Webpack cache warning (`typescript.js` / `D:\` vs `d:\`)
-
-You may see a long warning like *Resolving … typescript … doesn't lead to expected result* with paths that differ only by **drive-letter casing**. That is **normal on Windows** (same folder, different string). The dev server usually still works.
-
-- Delete the build cache: remove the **`.next`** folder, then run `npm run dev` again.
-- Prefer opening the project and running commands from one place (e.g. always `D:\wamp\...`) so paths stay consistent.
-- `next.config.mjs` lowers **infrastructure** log noise on Windows unless you set **`WEBPACK_VERBOSE=1`**.
-
----
-
-## License
-
-Add a `LICENSE` file before open-sourcing if required by your hackathon.
